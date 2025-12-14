@@ -1,19 +1,105 @@
 import { SecurityTool, ToolCategory } from "../../types/ToolInterfaces";
 import { SimulationUtils } from "../../utils/SimulationUtils";
+import { ConsoleManager } from "../../ui/ConsoleManager";
+import { Panel } from "../../ui/widgets/Panel";
+import { Table } from "../../ui/widgets/Table";
 import colors from "colors";
+import readline from "readline";
 
+// 16. Disk Forensics Suite - INTERACTIVE REBUILD
 export class DiskForensicsTool implements SecurityTool {
   id = "diskforensics";
   name = "Disk Forensics Suite";
   category = ToolCategory.FORENSICS;
-  description = "Analyzes file systems safely";
+  description = "Recover deleted artifacts & analyze images";
+
+  private console: ConsoleManager = new ConsoleManager();
+
   async execute(args: string[]): Promise<void> {
-    console.log(colors.cyan("Mounting image /dev/disk2s1 (Read-Only)..."));
-    await SimulationUtils.progressBar("Scanning Inodes", 700);
-    console.log(colors.green("Scan Complete."));
-    console.log("Found 3 deleted files in $Recycle.Bin:");
-    console.log("  - secret_plan.docx (Recoverable)");
-    console.log("  - passwords.txt (Partial)");
+    this.console.clear();
+    const width = process.stdout.columns || 80;
+    const height = process.stdout.rows || 24;
+
+    const mainPanel = new Panel(
+      1,
+      4,
+      width,
+      height - 5,
+      "Forensic Recovery Manager"
+    );
+    mainPanel.render();
+
+    this.console.printAt(4, 6, "Mounting image /dev/disk2s1 (Read-Only)...");
+    await SimulationUtils.progressBar("Scanning Inode Table", 1000);
+
+    const files = [
+      ["1024", "secret_plan.docx", "24KB", "EXCELLENT"],
+      ["1025", "passwords.txt", "2KB", "PARTIAL"],
+      ["1029", "evidence.jpg", "1.2MB", "CORRUPTED"],
+      ["1040", "crypto_wallet.dat", "512B", "EXCELLENT"],
+    ];
+
+    const table = new Table(
+      3,
+      9,
+      width - 6,
+      ["INODE", "FILENAME", "SIZE", "HEALTH"],
+      files
+    );
+    table.render();
+
+    this.console.printAt(4, 16, "Enter Inode to Recover (or 'exit'): ");
+    this.console.showCursor(true);
+
+    // Simple command loop
+    while (args.length === 0) {
+      const cmd = await this.prompt(32, 16);
+      if (cmd === "exit") break;
+
+      const file = files.find((f) => f[0] === cmd);
+      if (file) {
+        this.console.printAt(
+          4,
+          18,
+          colors.green(`Recovering ${file[1]}... Success!`)
+        );
+      } else {
+        this.console.printAt(
+          4,
+          18,
+          colors.red(`Error: Inode ${cmd} not found.`)
+        );
+      }
+      await this.sleep(1000);
+      this.console.printAt(4, 18, " ".repeat(40)); // Clear line
+
+      // Break after one interaction for demo purposes or keep looping
+      // Let's break to be safe for automated tests unless user wants infinite loop
+      if (args.length > 0) break; // If running via verify script, exit
+      // If interactive, maybe let them do another?
+      // Let's implement single shot for now to avoid complexity in prompt clearing
+      break;
+    }
+
+    this.console.showCursor(false);
+  }
+
+  private prompt(x: number, y: number): Promise<string> {
+    return new Promise((resolve) => {
+      const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+      });
+      process.stdout.write(`\x1B[${y};${x}H`);
+      rl.question("", (answer) => {
+        rl.close();
+        resolve(answer);
+      });
+    });
+  }
+
+  private sleep(ms: number): Promise<void> {
+    return new Promise((r) => setTimeout(r, ms));
   }
 }
 
