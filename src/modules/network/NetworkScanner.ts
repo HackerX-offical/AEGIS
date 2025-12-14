@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Logger } from "../core/Logger";
+import { Logger } from "../../core/Logger";
 
 export interface NetworkReport {
   url: string;
@@ -16,7 +16,7 @@ export interface NetworkReport {
   recommendations: string[];
 }
 
-export class NetworkSafetyEngine {
+export class NetworkScanner {
   private logger: Logger;
 
   constructor() {

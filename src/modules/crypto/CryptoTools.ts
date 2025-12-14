@@ -1,6 +1,6 @@
 import crypto from "crypto";
 
-export class CryptoUtilityEngine {
+export class CryptoTools {
   public hash(input: string, algorithm: string = "sha256"): string {
     try {
       return crypto.createHash(algorithm).update(input).digest("hex");
