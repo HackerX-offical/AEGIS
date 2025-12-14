@@ -12,7 +12,7 @@
 The **HX Security Intelligence CLI** is an educational tool. However, we take security seriously.
 
 1.  **Do not open public issues** for security vulnerabilities.
-2.  Email `security@hackerx.org` (Simulated contact).
+2.  Email `suryanshunab@gmail.com` (Simulated contact).
 3.  We will respond within 48 hours.
 
 ### Scope
