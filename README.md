@@ -1,118 +1,95 @@
-# HX Security Intelligence CLI
+# HackerX AEGIS (v2.0 Enterprise)
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![TypeScript](https://img.shields.io/badge/language-TypeScript-blue.svg)
-![Status](https://img.shields.io/badge/status-Legacy%20Stable-green.svg)
+![aegis_banner](https://img.shields.io/badge/Make-Advanced-red.svg?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-2.0.0%20Enterprise-green.svg?style=for-the-badge)
 
-> **Corporate Security Utility** | **HackerX Organization** | **Author: SURYANSHU NABHEET**
+> **"Security Intelligence Command Line | Threat Analysis • Recon • OSINT"**
 
-## 1. Project Philosophy
+**HackerX AEGIS** is a simulated **Security Operating System** designed for ethical hackers, researchers, and security professionals. It transforms your terminal into a high-fidelity "Mission Control" center for advanced threat analysis.
 
-The **HX Security Intelligence CLI** is a legacy-grade, enterprise-focused educational tool designed to demystify security concepts. Unlike aggressive "red team" tools, this project focuses purely on **defensive intelligence** and **mathematical modeling**.
+## 🚀 The AEGIS Experience
 
-It operates on the principle of **Ethical Security Intelligence**:
+AEGIS v2.0 introduces a revolutionary **Interactive Windowing Engine** that brings your terminal to life.
 
-1.  **No Exploitation**: The tool never executes attacks against external targets.
-2.  **No Brute-Force**: Crack times are calculated mathematically, not primarily via CPU/GPU grinding.
-3.  **Educational First**: Every output is designed to teach the user _why_ a vulnerability exists.
+### 🖥️ Mission Control Dashboard
+Navigable TUI with real-time system telemetry (CPU, RAM, Network Security Status).
 
-## 2. Architecture
+### ⚡ Interactive Tools
+Experience tools that feel like independent applications:
 
-The system follows a strict **Dependency Inversion** architecture to ensure maintainability and testability.
-
-```ascii
-+-------------------+       +-------------------+
-|   CLI Interface   | <---> |   Configuration   |
-| (Args / Interactive)|       |     (Singleton)   |
-+---------+---------+       +---------+---------+
-          |                           |
-          v                           v
-+-------------------+       +-------------------+
-|  Security Engine  | <---> |    Logger & Core  |
-| (Entropy, Risk...) |       |      Services     |
-+---------+---------+       +-------------------+
-          |
-          v
-+-------------------+
-|   Domain Models   |
-|  (Types/Schemas)  |
-+-------------------+
-```
-
-## 3. Features & How It Works
-
-### Password Entropy Engine
-
-Calculates the **Shannon Entropy** of a given string.
-
-- **Formula**: `H = -sum(p_i * log2(p_i))`
-- **Use Case**: Determines the raw mathematical randomness of a password, independent of dictionary attacks.
-
-### Crack-Time Modeling
-
-Estimates time-to-crack using **2024 GPU Hash Rates** (e.g., RTX 4090 baseline).
-
-- **Throttled**: Online attacks restricted by valid rate limits (e.g., 100/hour).
-- **Fast Hash**: Offline attacks against unsalted MD5 (10 Billion/sec).
-
-### Input Risk Classification
-
-Uses **Regex Pattern Matching** to identify unsafe characters.
-
-- **SQLi**: Detects quotes, comments, union operators.
-- **XSS**: Detects script tags, event handlers.
-- **Note**: This is a _static analysis_ simulation, not a dynamic WAF.
-
-### Hashing Lab
-
-Demonstrates the critical difference between `MD5`, `SHA-256`, and `PBKDF2`.
-
-- Shows how **Salt** changes the hash output completely, defeating rainbow tables.
-
-## 4. Usage
-
-### Quick Analysis
-
-```bash
-./bin/hx-sec analyze --target "supersecretPassword123!"
-```
-
-### Interactive Mode
-
-```bash
-./bin/hx-sec interactive
-```
-
-Enter the shell to run multiple analyses in a session.
-
-### JSON Output (Integration)
-
-```bash
-./bin/hx-sec analyze --target "admin" --json
-```
-
-## 5. Development
-
-### Prerequisites
-
-- Node.js v18+
-- TypeScript v4.x+
-
-### Setup
-
-```bash
-npm install
-npm run build
-```
-
-## 6. Ethical Boundaries
-
-This tool is strictly **DEFENSIVE**.
-
-- It **DOES NOT** store passwords.
-- It **DOES NOT** send data to the cloud.
-- It **DOES NOT** attempt to log into services.
+- **[NETWORK] NetScope Intelligence**: Live port-scanning grid with real-time protocol analysis.
+- **[MALWARE] Secure Sandbox**: Virtual Machine monitor with streaming system calls and behavior graphs.
+- **[FORENSICS] Recovery Manager**: Navigate and restore deletion artifacts from a simulated disk image.
 
 ---
 
-© 2025 HackerX Organization. All Rights Reserved.
+## 🛠️ Feature Set (50+ Tools)
+
+### Core Platform
+- **Security Kernel**: System integrity monitoring.
+- **Lab Virtualizer**: Manages isolated environments.
+- **Attack Surface Mapper**: Visualizes digital footprints.
+
+### Network Intelligence
+- **NetScope**: Deep packet inspection.
+- **Cloud Scanner**: AWS/Azure bucket enumeration.
+- **Zero Trust Simulator**: Policy validation engine.
+
+### Advanced Malware Analysis
+- **Binary Explainer**: Decompiles ASM to readable logic.
+- **Threat Classifier**: AI-driven malware categorization.
+- **Sandbox**: Safe execution environment.
+
+### Digital Forensics & IR
+- **Timeline Reconstructor**: Correlates events across logs.
+- **Memory Analyzer**: Volatility-style RAM dumps.
+- **Disk Recovery**: Restores deleted evidence.
+
+### Artificial Intelligence & Purple Team
+- **Security Copilot**: AI assistant for risk scoring.
+- **Attack Sim**: Adversary emulation (MITRE ATT&CK).
+- **CTF Engine**: Gamified training scenarios.
+
+---
+
+## 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/HackerX-offical/AEGIS.git
+
+# Install dependencies
+npm install
+
+# Build the system
+npm run build
+```
+
+## 🎮 Usage
+
+Launch the **AEGIS OS** environment:
+
+```bash
+npm run dev
+```
+
+*Watch the cinematic boot sequence and enter Mission Control.*
+
+---
+
+## 🔒 Ethical & Security Policy
+
+This platform is strictly for **Educational and Defensive** purposes.
+
+- **No Unauthorized Access**: Tools are simulated or strictly passive.
+- **Safe by Design**: "Malware" samples are inert dummy files.
+- **Privacy First**: No data leaves your local machine.
+
+---
+
+## 📄 License
+
+**MIT License** © 2025 **Suryanshu Nabheet (HackerX Organization)**.
+
+_"We Secure the Future."_

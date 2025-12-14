@@ -2,27 +2,35 @@
 
 ## Supported Versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x     | :white_check_mark: |
-| < 1.0   | :x:                |
+| Version | Status | Security Updates |
+| ------- | ------ | ---------------- |
+| **2.0.x** | **Active (Enterprise)** | :white_check_mark: |
+| 1.x     | Legacy | :x:                |
 
 ## Reporting a Vulnerability
 
-The **HX Security Intelligence CLI** is an educational tool. However, we take security seriously.
+**HackerX AEGIS** is a high-fidelity simulation platform. However, we maintain strict code quality standards.
 
-1.  **Do not open public issues** for security vulnerabilities.
-2.  Email `suryanshunab@gmail.com` (Simulated contact).
-3.  We will respond within 48 hours.
+If you discover a vulnerability in the core engine:
 
-### Scope
+1.  **Do NOT open a GitHub Issue.**
+2.  Email `security@hackerx.org` (Simulated).
+3.  We will acknowledge receipt within 24 hours.
 
-- **In Scope**: Logic errors in entropy calculation, unsafe dependency vulnerabilities.
-- **Out of Scope**: "This tool didn't hack my facebook" (It is not supposed to).
+### In Scope for Bounty Program
+- **Command Injection**: Unsafe argument passing in `tool.execute()`.
+- **Buffer Overflow**: Crashes caused by malformed input in `ConsoleManager`.
+- **Privilege Escalation**: Bypass of `ParentalControl` logic.
 
-## Ethical Use
+### Out of Scope
+- Simulated "malware" samples (they are inert by design).
+- Social engineering of the AI Assistant.
 
-By using this software, you agree to:
+## Ethical Usage Agreement
 
-- Use it only on data you own or have permission to test.
-- Never use the code to build malicious payloads.
+By booting **AEGIS OS**, you agree to:
+1.  **Authorization**: Only scan assets you own or have explicit permission to test.
+2.  **Privacy**: Respect user data privacy during forensic analysis.
+3.  **Educational Intent**: Use this platform to learn and defend, not to attack.
+
+_HackerX Organization_

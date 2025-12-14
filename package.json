@@ -1,6 +1,6 @@
 {
-  "name": "hx-security-intelligence-cli",
-  "version": "1.0.0",
+  "name": "hackerx-aegis",
+  "version": "2.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -8,10 +8,10 @@
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": ["security", "aegis", "cli", "hackerx", "osint", "forensics"],
+  "author": "Suryanshu Nabheet <HackerX Organization>",
+  "license": "MIT",
+  "description": "Enterprise Security Intelligence Operating System | Threat Analysis • Recon • OSINT",
   "dependencies": {
     "@types/colors": "^1.1.3",
     "@types/node": "^25.0.2",
