@@ -94,6 +94,11 @@ export class Program {
   }
 
   public run(): void {
-    this.program.parse(process.argv);
+    if (process.argv.length <= 2) {
+      const { InteractiveMode } = require("./InteractiveMode");
+      new InteractiveMode().start();
+    } else {
+      this.program.parse(process.argv);
+    }
   }
 }

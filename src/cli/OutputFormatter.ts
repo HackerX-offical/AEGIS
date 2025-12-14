@@ -58,4 +58,46 @@ export class OutputFormatter {
         return level;
     }
   }
+
+  public static formatNetworkReport(report: any): string {
+    let output = `\n${colors.cyan("--- NETWORK RECONNAISSANCE REPORT ---")}\n`;
+    output += `Target: ${colors.white(report.url)}\n`;
+    output += `Status: ${
+      report.status === 200
+        ? colors.green(report.status.toString())
+        : colors.yellow(report.status.toString())
+    }\n`;
+
+    output += `\n${colors.yellow("[ SECURITY HEADERS ]")}\n`;
+    output += `HSTS:             ${
+      report.securityHeaders.hsts
+        ? colors.green("Present")
+        : colors.red("Missing")
+    } \n`;
+    output += `CSP:              ${
+      report.securityHeaders.csp
+        ? colors.green("Present")
+        : colors.red("Missing")
+    } \n`;
+    output += `X-Frame-Options:  ${
+      report.securityHeaders.xFrame
+        ? colors.green("Present")
+        : colors.red("Missing")
+    } \n`;
+    output += `X-Content-Type:   ${
+      report.securityHeaders.xContentType
+        ? colors.green("Present")
+        : colors.red("Missing")
+    } \n`;
+
+    output += `\n${colors.yellow("[ ANALYSIS ]")}\n`;
+    output += `Risk Level: ${this.colorRisk(report.riskLevel)}\n`;
+
+    if (report.recommendations.length > 0) {
+      output += `\n${colors.blue("[ INTEL & RECOMMENDATIONS ]")}\n`;
+      report.recommendations.forEach((rec: string) => (output += `* ${rec}\n`));
+    }
+    output += `\n${colors.cyan("---------------------------------------")}\n`;
+    return output;
+  }
 }
